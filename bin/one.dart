@@ -26,8 +26,15 @@ void main(List<String> args) async {
               .toList()))
       .toList();
 
+  // Part 1
   final List<int> sums = elvs.map((elv) => elv.sum).toList();
   print(sums.reduce(max));
+
+  // Part 2
+  sums.sort((a, b) => b.compareTo(a));
+
+  final int topThreeSum = sums[0] + sums[1] + sums[2];
+  print(topThreeSum);
 }
 
 class Elv {
