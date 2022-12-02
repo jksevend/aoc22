@@ -19,15 +19,28 @@ void main(List<String> args) async {
 
   final List<int> scores = [];
   for (var round in rounds) {
-    final int score = round.calculateMyScore();
+    final int score = round.calculateMyScorePartOne();
     scores.add(score);
+  }
+
+  final List<int> scoresTwo = [];
+  for (var round in rounds) {
+    final int score = round.calculcateMyScorePartTwo();
+    scoresTwo.add(score);
   }
 
   int scoreSum = 0;
   for (var score in scores) {
     scoreSum += score;
   }
+
+  int scoreSumTwo = 0;
+  for (var score in scoresTwo) {
+    scoreSumTwo += score;
+  }
+
   print(scoreSum);
+  print(scoreSumTwo);
 }
 
 enum OpponentLetter {
@@ -51,7 +64,7 @@ class Round {
 
   Round({required this.opponentLetter, required this.myLetter});
 
-  int calculateMyScore() {
+  int calculateMyScorePartOne() {
     int myValue = myLetter.pointValue;
 
     if (isDraw(opponentLetter, myLetter)) {
@@ -63,6 +76,69 @@ class Round {
     }
 
     return myValue;
+  }
+
+  int calculcateMyScorePartTwo() {
+    int myValue = 0;
+    switch (myLetter) {
+      case MyLetter.X:
+        MyLetter letterToPlay = _doLose();
+        myValue += letterToPlay.pointValue;
+        myValue += losePoints;
+        break;
+      case MyLetter.Y:
+        MyLetter letterToPlay = _doDraw();
+        myValue += letterToPlay.pointValue;
+        myValue += drawPoints;
+        break;
+      case MyLetter.Z:
+        MyLetter letterToPlay = _doWin();
+        myValue += letterToPlay.pointValue;
+        myValue += winPoints;
+        break;
+      default:
+        throw StateError('Invalid letter');
+    }
+    return myValue;
+  }
+
+  MyLetter _doLose() {
+    switch (opponentLetter) {
+      case OpponentLetter.A:
+        return MyLetter.Z;
+      case OpponentLetter.B:
+        return MyLetter.X;
+      case OpponentLetter.C:
+        return MyLetter.Y;
+      default:
+        throw StateError('Invalid letter');
+    }
+  }
+
+  MyLetter _doWin() {
+    switch (opponentLetter) {
+      case OpponentLetter.A:
+        return MyLetter.Y;
+      case OpponentLetter.B:
+        return MyLetter.Z;
+      case OpponentLetter.C:
+        return MyLetter.X;
+      default:
+        throw StateError('Invalid letter');
+    }
+  }
+
+  MyLetter _doDraw() {
+    switch (opponentLetter) {
+      case OpponentLetter.A:
+        return MyLetter.X;
+      case OpponentLetter.B:
+        return MyLetter.Y;
+      case OpponentLetter.C:
+        return MyLetter.Z;
+      default:
+        throw StateError('Invalid letter');
+    }
   }
 }
 
