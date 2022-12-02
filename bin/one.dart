@@ -1,9 +1,10 @@
-import 'dart:io';
 import 'dart:math';
+
+import 'utility/file_util.dart';
 
 void main(List<String> args) async {
   // Read file content and split
-  final String fileContent = await _readElvs();
+  final String fileContent = await readFileContent('assets/1_elvs.txt');
   final List<String> fileLines = fileContent.split('\r\n');
 
   final List<List<String>> parsedContent = [];
@@ -41,9 +42,4 @@ class Elv {
     }
     return sum;
   }
-}
-
-Future<String> _readElvs() async {
-  final File file = File('assets/1_elvs.txt');
-  return await file.readAsString();
 }

@@ -15,4 +15,5 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/elvs.txt
+    - assets/1_elvs.txt
+    - assets/2_strategy_guide.txt
