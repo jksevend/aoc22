@@ -19,8 +19,10 @@ void main(List<String> args) async {
   }
   // Map every string entry to an elv class
   final List<Elv> elvs = parsedContent
-      .map(
-          (elvList) => Elv(food: elvList.map((caloriesValue) => int.parse(caloriesValue)).toList()))
+      .map((elvList) => Elv(
+          food: elvList
+              .map((caloriesValue) => int.parse(caloriesValue))
+              .toList()))
       .toList();
 
   final List<int> sums = elvs.map((elv) => elv.sum).toList();
@@ -42,6 +44,6 @@ class Elv {
 }
 
 Future<String> _readElvs() async {
-  final File file = File('assets/elvs.txt');
+  final File file = File('assets/1_elvs.txt');
   return await file.readAsString();
 }
