@@ -36,6 +36,28 @@ void main(List<String> args) async {
   print(sum);
 
   // Part 2 -
+  final List<List<Rucksack>> rucksackGroups = [];
+  int counter = 0;
+  final List<Rucksack> group = [];
+  for (var rucksack in rucksacks) {
+    if (counter == 3) {
+      rucksackGroups.add(List.from(group));
+      group.clear();
+      counter = 0;
+    } else {
+      group.add(rucksack);
+      counter++;
+    }
+  }
+
+  int sumTwo = 0;
+  for (var group in rucksackGroups) {
+    final String badgeItem = findBadgeItem(group);
+    final int priority = getPriority(badgeItem);
+    sumTwo += priority;
+  }
+
+  print(sumTwo);
 }
 
 class Rucksack {
@@ -46,6 +68,10 @@ class Rucksack {
     required this.firstCompartment,
     required this.secondCompartment,
   });
+
+  List<String> getFullCompartment() {
+    return List.from(firstCompartment.items + secondCompartment.items);
+  }
 
   List<String> findMatchingCharacters() {
     final List<String> first = firstCompartment.items;
@@ -79,5 +105,30 @@ List<String> extractCharacters(String source) {
 
 int getPriority(String character) {
   int index = alphabet.indexOf(character) + 1;
+  if (index == -1) {
+    return 0;
+  }
   return index;
+}
+
+String findBadgeItem(final List<Rucksack> group) {
+  final List<String> first = group.first.getFullCompartment();
+  final List<String> second = group[1].getFullCompartment();
+  final List<String> third = group[2].getFullCompartment();
+
+  final List<String> result = [];
+  for (var character in first) {
+    if (second.contains(character) && third.contains(character) && !result.contains(character)) {
+      result.add(character);
+    }
+  }
+
+
+  try {
+    return result[0];
+
+  } catch (e) {
+    print('$first\n$second\n$third\n');
+    return '';
+  }
 }
