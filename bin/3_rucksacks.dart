@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'utility/file_util.dart';
 
 const String alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -36,19 +38,7 @@ void main(List<String> args) async {
   print(sum);
 
   // Part 2 -
-  final List<List<Rucksack>> rucksackGroups = [];
-  int counter = 0;
-  final List<Rucksack> group = [];
-  for (var rucksack in rucksacks) {
-    if (counter == 3) {
-      rucksackGroups.add(List.from(group));
-      group.clear();
-      counter = 0;
-    } else {
-      group.add(rucksack);
-      counter++;
-    }
-  }
+  final List<List<Rucksack>> rucksackGroups = rucksacks.slices(3).toList();
 
   int sumTwo = 0;
   for (var group in rucksackGroups) {
@@ -118,17 +108,11 @@ String findBadgeItem(final List<Rucksack> group) {
 
   final List<String> result = [];
   for (var character in first) {
-    if (second.contains(character) && third.contains(character) && !result.contains(character)) {
+    if (second.contains(character) &&
+        third.contains(character) &&
+        !result.contains(character)) {
       result.add(character);
     }
   }
-
-
-  try {
-    return result[0];
-
-  } catch (e) {
-    print('$first\n$second\n$third\n');
-    return '';
-  }
+  return result[0];
 }
