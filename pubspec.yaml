@@ -19,5 +19,6 @@ flutter:
     - assets/2_strategy_guide.txt
     - assets/3_rucksacks.txt
     - assets/4_camp_cleanup.txt
+    - assets/5_supply_stacks.txt
 dependencies:
   collection: ^1.17.0
