@@ -37,9 +37,20 @@ class Crane {
   Crane();
 
   void applyMove(Move move) {
-    for (int i = 0; i < move.amount; i++) {
+    if (move.amount == 1) {
       final String value = stacks[move.from]!.pop();
       stacks[move.to]!.push(value);
+    } else {
+      final List<String> checkpoint = [];
+      for (int i = 0; i < move.amount; i++) {
+        final String value = stacks[move.from]!.pop();
+        checkpoint.add(value);
+      }
+
+      final List<String> toPut = checkpoint.reversed.toList();
+      for (var elem in toPut) {
+        stacks[move.to]!.push(elem);
+      }
     }
   }
 
