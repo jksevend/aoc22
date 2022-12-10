@@ -69,6 +69,13 @@ class AssignmentPair {
     final List<int> first = firstSection;
     final List<int> second = secondSection;
 
-    return first.toSet().containsAll(second) || second.toSet().containsAll(first);
+    return first.toSet().containsAll(second) || second.toSet().containsAll(first) || overlaps();
+  }
+
+  bool overlaps() {
+    final List<int> first = firstSection;
+    final List<int> second = secondSection;
+
+    return second.contains(first.first) || second.contains(first.last);
   }
 }
