@@ -1,6 +1,6 @@
 import 'utility/file_util.dart';
 
-const int markerLength = 4;
+const int markerLength = 14;
 
 void main() async {
   final String fileContent =
