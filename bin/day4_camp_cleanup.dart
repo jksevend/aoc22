@@ -3,7 +3,7 @@ import 'dart:math';
 import 'utility/file_util.dart';
 
 void main() async {
-  final String fileContent = await readFileContent('assets/4_camp_cleanup.txt');
+  final String fileContent = await readFileContent('assets/day4_camp_cleanup.txt');
   final List<String> fileLines = fileContent.split('\r\n');
 
   final List<AssignmentPair> pairs = [];

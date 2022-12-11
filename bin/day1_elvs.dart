@@ -4,7 +4,7 @@ import 'utility/file_util.dart';
 
 void main(List<String> args) async {
   // Read file content and split
-  final String fileContent = await readFileContent('assets/1_elvs.txt');
+  final String fileContent = await readFileContent('assets/day1_elvs.txt');
   final List<String> fileLines = fileContent.split('\r\n');
 
   final List<List<String>> parsedContent = [];

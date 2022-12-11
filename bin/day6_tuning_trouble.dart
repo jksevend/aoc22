@@ -4,7 +4,7 @@ const int markerLength = 14;
 
 void main() async {
   final String fileContent =
-      await readFileContent('assets/6_tuning_trouble.txt');
+      await readFileContent('assets/day6_tuning_trouble.txt');
 
   final List<String> fileChars = fileContent.split('');
   int processed = 0;

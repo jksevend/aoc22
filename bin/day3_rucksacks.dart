@@ -5,7 +5,7 @@ import 'utility/file_util.dart';
 const String alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 void main(List<String> args) async {
-  final String fileContent = await readFileContent('assets/3_rucksacks.txt');
+  final String fileContent = await readFileContent('assets/day3_rucksacks.txt');
   final List<String> fileLines = fileContent.split('\r\n');
 
   // Parse fileLines and add to rucksacks

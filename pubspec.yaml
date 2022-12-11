@@ -15,11 +15,11 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/1_elvs.txt
-    - assets/2_strategy_guide.txt
-    - assets/3_rucksacks.txt
-    - assets/4_camp_cleanup.txt
-    - assets/5_supply_stacks.txt
-    - assets/6_tuning_trouble.txt
+    - assets/day1_elvs.txt
+    - assets/day2_strategy_guide.txt
+    - assets/day3_rucksacks.txt
+    - assets/day4_camp_cleanup.txt
+    - assets/day5_supply_stacks.txt
+    - assets/day6_tuning_trouble.txt
 dependencies:
   collection: ^1.17.0

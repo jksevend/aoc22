@@ -2,7 +2,7 @@ import 'utility/file_util.dart';
 import 'utility/stack.dart';
 
 void main() async {
-  final String fileContent = await readFileContent('assets/5_supply_stacks.txt');
+  final String fileContent = await readFileContent('assets/day5_supply_stacks.txt');
   final List<String> fileLines = fileContent.split('\r\n');
 
   final List<Move> moves = [];

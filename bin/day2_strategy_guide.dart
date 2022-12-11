@@ -6,7 +6,7 @@ const int winPoints = 6;
 
 void main(List<String> args) async {
   final String fileContent =
-      await readFileContent('assets/2_strategy_guide.txt');
+      await readFileContent('assets/day2_strategy_guide.txt');
   final List<String> fileLines = fileContent.split('\n');
 
   final List<Round> rounds = fileLines.map((line) {
